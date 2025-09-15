@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salas de Chat</title>
+<link rel="stylesheet" href="style.css">
+<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+<!-- Pantalla 1: Login -->
+<div id="login-screen">
+    <h2>Ingrese su nombre</h2>
+    <input type="text" id="username-input" maxlength="15" />
+    <button id="login-btn">Ingresar</button>
+    <div id="login-status" class="status-text"></div> <!-- Conectado/Desconectado -->
+</div>
+
+<!-- Pantalla 2: Selección de sala -->
+<div id="room-selection-screen" class="hidden">
+    <div class="top-bar">
+        <span id="display-username"></span>
+        <span id="user-status" class="status-text"></span>
+        <button id="logout-btn">Salir</button>
+    </div>
+    <h2>Elija una sala</h2>
+    <button id="public-room-btn">Sala Pública</button>
+    <div class="private-room">
+        <input type="text" id="private-room-name" placeholder="Nombre de sala privada" maxlength="10"/>
+        <button id="create-private-room-btn">Crear Sala</button>
+        <button id="join-private-room-btn">Unirse</button>
+    </div>
+    <div id="connected-users" class="connected-users"></div> <!-- Lista de usuarios -->
+</div>
+
+<!-- Pantalla 3: Chat -->
+<div id="chat-screen" class="hidden">
+    <div class="top-bar">
+        <span id="chat-room-name"></span>
+        <span id="chat-user-status" class="status-text"></span>
+        <button id="back-to-rooms-btn">Menú</button>
+    </div>
+    <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+            <div id="messages"></div>
+            <div class="message-input">
+                <input type="text" id="chat-message-input" placeholder="Escribe tu mensaje..." />
+                <button id="send-message-btn">Enviar</button>
+            </div>
+        </div>
+        <div style="width:200px;">
+            <div id="chat-connected-users" class="connected-users"></div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
